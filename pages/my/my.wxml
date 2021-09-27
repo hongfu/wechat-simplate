@@ -1,0 +1,14 @@
+<!--pages/my/my.wxml-->
+<import src="../tmpl/tmpl"></import>
+<view class="page-body">
+  <template is="nav-txt" data="{{txt: '功能'}}" />
+  <view class="container">
+    <view class="user-avatar-big">
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
+    <view class="btn-grid">
+      <button bindtap="toNew"> 录入信息 </button>
+      <button bindtap="toMyList"> 我的录入 </button>
+    </view>
+  </view>
+</view>

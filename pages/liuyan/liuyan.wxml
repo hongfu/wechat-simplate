@@ -1,0 +1,57 @@
+<!--liuyan.wxml-->
+<import src="../tmpl/tmpl"></import>
+<view class="page-body">
+<template is="nav-txt" data="{{txt: '新信息'}}" />
+
+<view class="page-section">
+    <view class="page-section">
+    <view class="weui-cells__title"><text class="weui-badge weui-badge_dot"></text>信息图片能说明一切({{imgs_length}}/5)：</view>
+    <view class="weui-cells">
+      <view class="weui-uploader__bd">
+        <view class="weui-uploader__files" id="uploaderFiles">
+          <block wx:for="{{imgs}}" wx:key="*this">
+            <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+              <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+            </view>
+          </block>
+        </view>
+        <view class="weui-uploader__input-box">
+          <view class="weui-uploader__input" bindtap="chooseImg"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+    <view class="weui-cells__title">还要补充：</view>
+    <view class="weui-cells">
+      <view class="weui-cell weui-cell_active">
+                <view class="weui-cell__bd">
+                    <textarea  value="{{txt}}" id="txt" bindinput="someInput" placeholder="写在这里..." maxlength="150" class="weui-textarea" placeholder-class="weui-input__placeholder" style="height: 5.3em" />
+                    <view class="weui-textarea-counter">{{txt_length}}/150</view>
+                </view>
+            </view>
+    </view>
+  </view>
+
+  <!-- <view class="page-section">
+    <view class="weui-cells__title">更多设置：</view>
+    <view class="weui-cells status-group">
+      <switch-btn id="can_sale" bindtap="changeStatus" value="{{can_sale}}">转出</switch-btn>
+      <switch-btn id="can_exchange" bindtap="changeStatus" value="{{can_exchange}}">交换</switch-btn>
+      <switch-btn id="can_give" bindtap="changeStatus" value="{{can_give}}">赠送</switch-btn>
+    </view>
+  </view> -->
+  <view class="page-section">
+    <view class="weui-cell weui-cell_active">
+      <view class="weui-cell__hd">
+        <view class="weui-label"><text class="weui-badge weui-badge_dot"></text>口令</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" value="{{kouling}}" id="kouling" bindinput="someInput" placeholder-class="weui-input__placeholder"
+          placeholder="请输入口令" />
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{kouling!='' && imgs.length > 0}}" class="page-section">
+    <button bindtap="done">新信息提交</button>
+  </view>
+</view>

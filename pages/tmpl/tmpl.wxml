@@ -1,0 +1,7 @@
+<template name="nav-txt">
+  <view class="nav-txt">
+    <image class="nav-txt_img" src="../../img/zhaduir1.png" mode="cover"></image>
+    <text class="nav-txt_text">{{txt}}<block wx:if="{{listcount}}">{{'('+listcount+')'}}</block></text>
+  </view>
+</template>
+

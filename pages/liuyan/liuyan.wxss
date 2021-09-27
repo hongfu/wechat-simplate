@@ -1,0 +1,46 @@
+/* pages/liuyan/liuyan.wxss */
+.nav-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #aaa;
+  padding-top: 48rpx;
+}
+
+.app-logo {
+  overflow: hidden;
+  width: 66rpx;
+  height: 66rpx;
+  margin: 20rpx;
+}
+
+.page-section{
+  padding: 20rpx;
+}
+
+.weui-cells::before,.weui-cells::after{
+  content: none;
+}
+
+.prview{
+  width: 200rpx;
+  height: 200rpx;
+  background-color: #eeeeee;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+.btnChooseImg{
+  display: inline-block;
+  line-height: 200rpx;
+  font-size: 180rpx;
+  background-color: #aaaaaa;
+  min-width: 200rpx;
+  min-height: 200rpx;
+  text-align: center;
+}
+
+.weui-uploader__bd{
+  padding: 16px;
+}
+

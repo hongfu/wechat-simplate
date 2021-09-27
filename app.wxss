@@ -1,0 +1,26 @@
+/**app.wxss**/
+page{
+  --j-action: #b36a0b;
+  --j-status: #b36a0b;
+}
+
+button{
+  color: var(--j-action);
+}
+
+.nav-txt {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #aaa;
+  padding-top: 48rpx;
+}
+.nav-txt_img {
+  overflow: hidden;
+  width: 66rpx;
+  height: 66rpx;
+  margin: 20rpx;
+}
+.nav-txt_text {
+  font-size: 1.2em;
+}

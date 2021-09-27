@@ -1,0 +1,23 @@
+<!--index.wxml-->
+<import src="../tmpl/tmpl"></import>
+<template is="nav-txt" data="{{txt: '旧吗'}}" />
+<view class="container">
+  <image class="app-logo" src="../../img/zhaduir1.png" mode="cover"></image>
+  <view class="motto">
+    <text user-select="false">内部信息录入工具</text>
+    <progress bindactiveend="buttonShow" percent="{{progre}}" active active-mode="forwards" />
+  </view>
+
+  <block wx:if="{{ani == 'done' && isLogin == true}}">
+    <button wx:if="{{isLogin}}" bindtap="toMy"> 功能区 </button>
+  </block>
+
+</view>
+<block wx:if="{{ani == 'done' && isLogin == false}}">
+  <view class="wx-login">
+    <view class="desc">
+    <open-data type="userNickName" lang="zh_CN"></open-data>，中台会用到头像<view class="ava"><open-data type="userAvatarUrl"></open-data></view>
+    </view>
+    <button wx:if="{{!isLogin}}" bindtap="wxupdate"> 使用微信授权登录 </button>
+  </view>
+</block>

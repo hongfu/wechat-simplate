@@ -1,0 +1,79 @@
+<!--pages/infos/infos.wxml-->
+<import src="../tmpl/tmpl"></import>
+<view class="page-body">
+<template is="nav-txt" data="{{txt: '我的录入',listcount: infos.length}}" />
+  <block wx:for="{{infos}}" wx:key="this">
+    <view class="weui-panel weui-panel_access" id="{{index}}">
+      <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_appmsg">
+          <view class="weui-media-box__bd" bindtap="previewImage" id="{{index}}">
+              <view class="weui-uploader__files imgs-{{item.imgs.length}}">
+                <block wx:if="{{item.imgs.length == 1}}">
+                  <block wx:for="{{item.imgs}}" wx:key="this">
+                    <view class="img-single" id="{{item}}">
+                      <image lazy-load="true" class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                    </view>
+                  </block>
+                </block>
+                <block wx:if = "{{item.imgs.length ==2 || item.imgs.length == 4}}">
+                  <block wx:for="{{item.imgs}}" wx:key="this">
+                    <view class="img-single-row" id="{{item}}">
+                      <image lazy-load="true" class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                    </view>
+                  </block>
+                </block>
+                <block wx:if="{{item.imgs.length == 3 || item.imgs.length > 4}}">
+                  <block wx:for="{{item.imgs}}" wx:key="this">
+                    <view class="img-double-rows" id="{{item}}">
+                      <image lazy-load="true" class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                    </view>
+                  </block>
+                </block>
+              </view>
+          </view>
+        </view>
+        <view bindtap="toInfo" id="{{item.infoid}}" class="weui-media-box weui-media-box_text">
+          <view>
+            <h4 wx:if="{{item.title}}" class="weui-media-box__title">{{item.title}}</h4>
+            <view wx:if="{{item.txt}}" class="weui-media-box__desc">{{item.txt}}</view>
+          </view>
+          <view class="weui-media-box__info">
+            <view class="weui-media-box__info__meta">{{item.post_time}}</view>
+            <view wx:if="{{item.comment!=null}}" class="weui-media-box__info__meta weui-media-box__info__meta_extra">{{item.comment_time+' '+item.comment}}</view>
+            
+          </view>
+        </view>
+        <view wx:if="{{!item.is_done}}" class="mylist-item-btns-group">
+          <button data-info-id="{{item.infoid}}" bindtap="toEdit">编辑</button>
+          <button data-info-id="{{item.infoid}}" bindtap="openManage">管理</button>
+        </view>
+      </view>
+    </view>
+  </block>
+  <view class="weui-loadmore weui-loadmore_line weui-loadmore_dot">
+    <text class="weui-loadmore__tips"></text>
+  </view>
+
+  <view class="fadeIn" wx:if="{{managePage}}">
+        <view class="weui-mask" bindtap="closeManage"></view>
+        <view class="weui-half-screen-dialog">
+            <view class="weui-half-screen-dialog__hd">
+                <view class="weui-half-screen-dialog__hd__main">
+                    <strong class="weui-half-screen-dialog__title">管理操作</strong>
+                </view>
+            </view>
+            <view class="weui-half-screen-dialog__bd">
+              <view class="weui-cells manage-status-group">
+                <switch-btn id="can_sale" bindtap="changeStatus" value="{{currentItem.can_sale}}">转出</switch-btn>
+                <switch-btn id="can_exchange" bindtap="changeStatus" value="{{currentItem.can_exchange}}">交换</switch-btn>
+                <switch-btn id="can_give" bindtap="changeStatus" value="{{currentItem.can_give}}">赠送</switch-btn>
+                <switch-btn id="is_done" bindtap="changeStatus" value="{{currentItem.is_done}}">完结</switch-btn>
+              </view>
+              <view class="weui-cells manage-status-group">
+              <button id="is_deleted" bindtap="changeStatus" style="color: red;">删除此信息</button>
+              </view>
+              
+            </view>
+        </view>
+    </view>
+</view>

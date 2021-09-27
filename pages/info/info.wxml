@@ -1,0 +1,40 @@
+<!--pages/info/info.wxml-->
+<import src="../tmpl/tmpl"></import>
+<view class="page-body">
+  <template is="nav-txt" data="{{txt: '信息预览'}}" />
+  <view class="weui-article">
+    <!-- <view class="weui-article__h1">{{info.nick_name}}的分享</view> -->
+    <view class="weui-article__section">
+      <view class="weui-media-box weui-media-box_text">
+        <!-- <view class="weui-media-box__info">
+          <button wx:if="{{userid==info.userid}}" class="weui-article__h3" bindtap="editInfo"
+            id="{{info.infoid}}">编辑此条信息</button>
+        </view> -->
+        <view class="weui-media-box__info">
+          <view wx:if="{{info.can_sale}}" class="weui-media-box__info__meta">转让</view>
+          <view wx:if="{{info.can_exchange}}" class="weui-media-box__info__meta">交换</view>
+          <view wx:if="{{info.can_give}}" class="weui-media-box__info__meta">赠与</view>
+        </view>
+      </view>
+      <view class="weui-article__section">
+        <view wx:if="{{info.txt}}" class="weui-article__p">
+          <view class="txt__section"><text>{{info.txt}}</text></view>
+        </view>
+        <view class="weui-article__p">
+          <block wx:for="{{info.imgs}}" wx:key="this">
+            <image bindtap="previewImage" class="weui-article__img info-detail-img" src="{{item}}" mode="aspectFit"
+              id="{{index}}" />
+          </block>
+        </view>
+        <view class="weui-article__p">
+          <block wx:for="{{comments}}" wx:key="this">
+            <view class="view-comments">
+                <image class="avatar" src="{{item.avatar_url}}" mode="aspectFit" id="{{index}}" />{{item.comment}}{{item.formattime}}
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>

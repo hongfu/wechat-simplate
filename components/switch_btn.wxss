@@ -1,0 +1,27 @@
+/* components/my-component.wxss */
+.switch-btn{
+  width: 120rpx;
+  height: 120rpx;
+  background-color: #EBEBEB;
+  border: none;
+  border-radius: 16rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-right: 20rpx;
+}
+.switch-btn-choose{
+  background-color:  #b36a0b;
+}
+.switch-btn-unchoose{
+  background-color:  #EBEBEB;
+}
+.switch-btn_text{
+  font-weight: 600;
+  font-size: 1.2em;
+  width: 2em;
+  text-align: center;
+  color: #BBBBBB;
+}
